@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Informe Semanal · InfyCredit & Visionamos</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logos">
+        <img src="C:\Users\sopor\Downloads\Informe_Semanal\Informe_Semanal\logo_infycredit.png" alt="InfyCredit" />
+        <img src="C:\Users\sopor\Downloads\Informe_Semanal\Informe_Semanal\logo_visionamos.png" alt="Visionamos" />
+      </div>
+      <div class="titles">
+        <h1>InfyCredit · Visionamos</h1>
+        <p class="subtitle">
+          Informe semanal por entidad y contrato – validación de identidad, análisis deudor y codeudor.
+        </p>
+        <p class="micro">Alianza estratégica InfyCredit &amp; Visionamos</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="filters card">
+      <div class="filters-grid">
+        <div class="field">
+          <label for="fSemana">Semana</label>
+          <select id="fSemana"></select>
+          <div id="semanaRango" class="hint">—</div>
+        </div>
+
+        <div class="field">
+          <label for="fEntidad">Entidad</label>
+          <select id="fEntidad"></select>
+        </div>
+
+        <div class="field">
+          <label for="fContrato">Contrato</label>
+          <select id="fContrato"></select>
+        </div>
+
+        <div class="field actions">
+          <button id="btnReset" class="btn ghost" type="button">Limpiar filtros</button>
+        </div>
+      </div>
+
+      <div class="rules">
+        <h3>Reglas de negocio</h3>
+        <ul>
+          <li><strong>1 operación</strong> = análisis deudor <em>o</em> análisis codeudor.</li>
+          <li>Las <strong>validaciones de identidad</strong> no descuentan de bolsa (solo se reportan).</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="kpis">
+      <article class="kpi card">
+        <div class="kpi-title">Validación de identidad</div>
+        <div id="kValidacion" class="kpi-value">0</div>
+      </article>
+
+      <article class="kpi card">
+        <div class="kpi-title">Análisis deudor</div>
+        <div id="kDeudor" class="kpi-value">0</div>
+      </article>
+
+      <article class="kpi card">
+        <div class="kpi-title">Análisis codeudor</div>
+        <div id="kCodeudor" class="kpi-value">0</div>
+      </article>
+
+      <article class="kpi card">
+        <div class="kpi-title">Total (registro)</div>
+        <div id="kTotal" class="kpi-value">0</div>
+      </article>
+    </section>
+
+    <section class="table-wrap card">
+      <div class="table-head">
+        <div>
+          <h2>Detalle semanal (según filtros)</h2>
+          <p class="micro">
+            Tip: clic en los encabezados para ordenar. Por defecto: <strong>mayor → menor</strong> en métricas.
+          </p>
+        </div>
+        <div class="pill" id="rowsInfo">0 filas</div>
+      </div>
+
+      <div class="table-scroll">
+        <table id="tabla">
+          <thead>
+            <tr>
+              <th data-key="semana">Semana</th>
+              <th data-key="entidad">Entidad</th>
+              <th data-key="contrato">Contrato</th>
+              <th class="num" data-key="validacionIdentidad">Validación identidad</th>
+              <th class="num" data-key="analisisDeudor">Análisis deudor</th>
+              <th class="num" data-key="analisisCodeudor">Análisis codeudor</th>
+              <th class="num" data-key="total">Total (registro)</th>
+              <th data-key="encargado">Encargado</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot>
+            <tr>
+              <td colspan="3"><strong>Totales del filtro</strong></td>
+              <td class="num" id="tValidacion">0</td>
+              <td class="num" id="tDeudor">0</td>
+              <td class="num" id="tCodeudor">0</td>
+              <td class="num" id="tTotal">0</td>
+              <td>—</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <p class="micro footnote">
+        Los totales consideran únicamente los registros que cumplen con los filtros de semana, entidad y contrato.
+      </p>
+    </section>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
