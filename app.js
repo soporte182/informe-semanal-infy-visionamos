@@ -27,7 +27,11 @@ const METRIC_KEYS = new Set(["validacionIdentidad","analisisDeudor","analisisCod
 let sortState = { key: "total", dir: "desc" }; // por defecto: mayor → menor
 
 function uniqueSorted(arr){
-  return [...new Set(arr)].sort((a,b)=> String(a).localeCompare(String(b), "es"));
+  return [...new Set(arr)].sort((a,b)=> {
+    const numA = parseInt(a.replace(/\D/g, ''));
+    const numB = parseInt(b.replace(/\D/g, ''));
+    return numA - numB;
+  });
 }
 
 function parseISO(iso){
